@@ -1,24 +1,18 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-// 引入
-import Home from "@/views/Home.vue";
-import About from "@/views/About.vue";
-
-// 路由信息
 let routes = [
+  {
+    path: "/school-apply",
+    name: "school-apply",
+    component: () => import("@/views/SchoolApply.vue")
+  },
   {
     path: "/",
     name: 'home',
-    component: Home,
-  },
-  {
-    path: "/about",
-    name: 'about',
-    component: About,
-  },
+    component: () => import("@/views/Home.vue")
+  }
 ];
 
-// 路由器
 const router = createRouter({
   history: createWebHistory(), // HTML5模式
   routes,
