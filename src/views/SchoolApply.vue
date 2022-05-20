@@ -37,7 +37,7 @@ export default {
     },
     methods: {
         submit() {
-            axios.post('/school-apply', this.form)
+            axios.post('/school-apply/store', this.form)
             .then(res => {
                 if (res.data.code === 0) {
                     this.$router.push('/')

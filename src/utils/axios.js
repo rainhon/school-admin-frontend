@@ -3,10 +3,11 @@ import router from '@/router'
 import { ElMessage } from 'element-plus'
 
 const instance = axios.create({
-    baseURL: 'https://adny.utools.club/api',
+    // baseURL: 'https://secret-plains-39864.herokuapp.com',
+    baseURL: 'http://www.school-admin.local/api',
     timeout: 10000,
     headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
     }
 })
 instance.interceptors.request.use(function (config) {
@@ -23,12 +24,12 @@ instance.interceptors.response.use(function (response) {
     if (response.data.code === 401 || response.data.code === 409) {
         router.push('/login')
     }else if(response.data.code !== 200){
-        ElMessage(response.message)
+        ElMessage(response.message ? response.message : '请求成功')
     }
     return response.data
 }, function (error) {
     // Do something with response error
-    console.log(error)
+    ElMessage(error.message)
     return Promise.reject(error);
 })
 
