@@ -1,8 +1,9 @@
 <template>
-    <p>test</p>
+    <el-page-header :content="pageTitle" @back="back"/>
     <el-header>
         <header-menu></header-menu>
     </el-header>
+
     <el-main>
         <router-view></router-view>
     </el-main>
@@ -14,6 +15,21 @@ export default {
   name: 'Layout',
   components: {
     HeaderMenu
-  }
+  },
+  data() {
+    return {
+      title: ''
+    }
+  },
+  methods: {
+    back() {
+      this.$router.go(-1)
+    }
+  },
+  computed: {
+    pageTitle() {
+      return this.title || this.$route.name
+    }
+  },
 }
 </script>
