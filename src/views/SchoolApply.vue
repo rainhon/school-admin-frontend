@@ -20,6 +20,9 @@
 </template>
 
 <script>
+import axios from '@/utils/axios.js'
+import { ElMessage } from 'element-plus'
+
 export default {
     name: 'SchoolApply',
     data() {
@@ -35,6 +38,13 @@ export default {
     methods: {
         submit() {
             axios.post('/school-apply', this.form)
+            .then(res => {
+                if (res.data.code === 0) {
+                    this.$router.push('/')
+                }
+            }).catch(err => {
+                ElMessage('请求失败:'+err.code)
+            })
         }
     }
 }
