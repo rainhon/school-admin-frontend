@@ -1,5 +1,12 @@
 <template>
-    登录 
+    <el-form label-position="top">
+        <el-form-item label="邮箱">
+            <el-input v-model="form.email" />
+        </el-form-item>
+        <el-form-item label="密码">
+            <el-input show-password v-model="form.password"/>
+        </el-form-item> 
+    </el-form>
 </template>
 
 <script>
@@ -10,7 +17,7 @@ export default {
     data() {
         return {
             form: {
-                username: '',
+                email: '',
                 password: ''
             }
         }
