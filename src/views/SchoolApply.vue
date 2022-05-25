@@ -39,9 +39,10 @@ export default {
         submit() {
             axios.post('/school-apply/store', this.form)
             .then(res => {
-                if (res.data.code === 0) {
+                ElMessage.success('申请成功,请耐心等待邮件回复')
+                setTimeout(() => {
                     this.$router.push('/')
-                }
+                }, 3000)
             }).catch(err => {
                 ElMessage('请求失败:'+err.code)
             })
