@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 
 let routes = [
   {
@@ -25,7 +25,7 @@ let routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(), // HTML5模式
+  history: createWebHashHistory(), 
   routes,
 });
 
